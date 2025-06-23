@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-// teste
+
 import DayClasses from "./pages/dayClasses/dayClasses";
 import Calendar from "./pages/calendar/calendar";
 import Flowchart from "./pages/flowchart/flowchart";
