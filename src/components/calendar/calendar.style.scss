@@ -119,7 +119,42 @@
         }
       }
 
+      
       &-description {
+        // display: flex;
+        // flex-direction: row;
+        gap: 2px;
+
+        &-class {
+          color: var.$blue-gray;
+          font-weight: 400;
+          font-size: 8px;
+          line-height: 100%;
+          letter-spacing: 0%;
+          text-align: center;
+
+
+          @include mixin.dynamicLineClamp;
+
+          @include mixin.desktopStyle() {
+            font-size: 12px;
+          }
+        }
+
+        &-button {
+          background-color: transparent;
+          border: none;
+          cursor: pointer;
+
+          // img {
+          //   width: 50px;
+          //   color: white;
+          // }
+        }
+      }
+
+
+      &-location {
         margin-top: 2px;
         color: var.$blue-weak-emphasis;
         font-size: 6px;

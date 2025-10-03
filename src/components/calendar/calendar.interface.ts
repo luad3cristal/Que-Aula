@@ -3,6 +3,7 @@ import { IClassesData } from "../../types/dataClasses.interface";
 export interface ICalendar {
   classes: IClasses[];
   secondaryInfo?: "classroom" | "description" | "teacher";
+  tertiaryInfo?: "classroom" | "description" | "teacher";
 }
 
 export interface IClasses {

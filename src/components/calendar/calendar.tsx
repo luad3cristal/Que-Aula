@@ -2,13 +2,26 @@ import { forwardRef } from "react";
 import { ICalendar, IClassInfo } from "./calendar.interface";
 
 import "./calendar.style.scss";
+import InfoIcon  from "../../assets/info.svg";
 
 export const Calendar = forwardRef<HTMLDivElement, ICalendar>(
-  ({ classes, secondaryInfo = "classroom" }, ref) => {
+  (
+    {classes, secondaryInfo = "classroom", tertiaryInfo = "description" }, ref) => {
     const checkDate = (dia: string) => dia !== "Domingo" && dia !== "Sábado";
 
     const handleSecondaryInfo = (info: IClassInfo) => {
       switch (secondaryInfo) {
+        case "classroom":
+          return info.classroom;
+        case "description":
+          return info.classDescription;
+        case "teacher":
+          return info.teacher;
+      }
+    };
+
+    const handleTertiaryInfo = (info: IClassInfo) => {
+      switch (tertiaryInfo) {
         case "classroom":
           return info.classroom;
         case "description":
@@ -98,7 +111,17 @@ export const Calendar = forwardRef<HTMLDivElement, ICalendar>(
                             }`}
                           >
                             <h3 className="calendar__class__info-item-title">{info.className}</h3>
-                            <h5 className="calendar__class__info-item-description">
+
+                            <div className="calendar__class__info-item-description">
+                              <h5 className="calendar__class__info-item-description-class">
+                                {info.greve ? "GREVE" : handleTertiaryInfo(info) || "-----"}
+                              </h5>
+                              {/* <button className="calendar__class__info-item-description-button" >
+                                <img src={InfoIcon} alt="" />
+                              </button> */}
+                            </div>
+
+                            <h5 className="calendar__class__info-item-location">
                               {info.greve ? "GREVE" : handleSecondaryInfo(info) || "-----"}
                             </h5>
                           </div>
